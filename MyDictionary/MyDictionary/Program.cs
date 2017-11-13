@@ -28,8 +28,37 @@ namespace MyDictionary
         static void Main(string[] args)
         {
             //Пример использования репозитария
-            IrregularVerbsRepository repo = new IrregularVerbsRepository();
-           var verbs = repo.GetWords();
+            //IrregularVerbsRepository repo = new IrregularVerbsRepository();
+            //var verbs = repo.GetWords();
+          
+          Dictionary<string, Irregular_verbs> verbs = Dictionary_of_irregular_verds.MyDict();
+
+            do
+            {
+                    Console.WriteLine("---------------------------------------------");
+                    Console.WriteLine("Input verb : ");
+                    string value = Console.ReadLine();
+             
+                    if (verbs.ContainsKey(value))
+                    {
+                        Console.WriteLine($"{ verbs[value]}");
+                    }
+                    else 
+                     {
+                   Console.WriteLine($"Key = \\ {value} \\ is not found.");
+                     }
+
+            }
+            while (Console.ReadKey().Key != ConsoleKey.Escape);
+
+
+            Console.WriteLine("Dictionary: ");
+            foreach (KeyValuePair<string, Irregular_verbs> p in verbs)
+            {
+                Console.WriteLine($"{p.Key} {p.Value} ");
+                Console.WriteLine();
+            }
         }
     }
-}
+    }
+
