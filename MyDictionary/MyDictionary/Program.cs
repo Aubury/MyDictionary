@@ -13,7 +13,6 @@
 //3) Для хранения словаря и поиска по нему использовать коллекцию Dictionary<ключ, словарная_статья>,
 //     где ключ - глагол в 1й форме, а словарная_статья - класс, созданный в п.2
 //4) При запуске приожения заполнять Dictionary используя IrregularVerbsRepository
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,37 +27,42 @@ namespace MyDictionary
         static void Main(string[] args)
         {
             //Пример использования репозитария
-            //IrregularVerbsRepository repo = new IrregularVerbsRepository();
-            //var verbs = repo.GetWords();
-          
-          Dictionary<string, Irregular_verbs> verbs = Dictionary_of_irregular_verds.MyDict();
+            IrregularVerbsRepository repo = new IrregularVerbsRepository();
+            var verbs = repo.GetWords();
 
-            do
+            Dictionary<string, Irregular_verbs> row_verbs = new Dictionary<string, Irregular_verbs>();
+            foreach(var i in verbs)
             {
-                    Console.WriteLine("---------------------------------------------");
-                    Console.WriteLine("Input verb : ");
-                    string value = Console.ReadLine();
-             
-                    if (verbs.ContainsKey(value))
-                    {
-                        Console.WriteLine($"{ verbs[value]}");
-                    }
-                    else 
-                     {
-                   Console.WriteLine($"Key = \\ {value} \\ is not found.");
-                     }
+                //Irregular_verbs row = new Irregular_verbs(i[0], i[1], i[2], i[3]);
+                //row_verbs.Add(i[0], row);
+                row_verbs.Add(i[0], new Irregular_verbs(i[0], i[1], i[2], i[3]));
+            }
+           foreach(var i in row_verbs)
+            {
+                Console.WriteLine($"{i.ToString()}\n");
+            }
+
+
+         do
+            {
+                Console.WriteLine("---------------------------------------------");
+                Console.WriteLine("Input verb : \n");
+                var value = Console.ReadLine();
+
+                if (row_verbs.ContainsKey(value))
+                {
+                    Console.WriteLine($"{ row_verbs[value]}");
+                }
+                else
+                {
+                    Console.WriteLine($"Key = \\ {value} \\ is not found.");
+                }
 
             }
             while (Console.ReadKey().Key != ConsoleKey.Escape);
 
-
-            Console.WriteLine("Dictionary: ");
-            foreach (KeyValuePair<string, Irregular_verbs> p in verbs)
-            {
-                Console.WriteLine($"{p.Key} {p.Value} ");
-                Console.WriteLine();
-            }
         }
     }
-    }
+   }
+
 

@@ -12,6 +12,13 @@ namespace MyDictionary
         public string Past_Simple { get; set; }
         public string Past_Participle { get; set; }
         public string Translation { get; set; }
+        public Irregular_verbs(string inf,string past_s,string past_p, string tran)
+        {
+            Infinitive = inf;
+            Past_Simple = past_s;
+            Past_Participle = past_p;
+            Translation = tran;
+        }
     
         public override string ToString()
         {

@@ -13,15 +13,15 @@ namespace MyDictionary
   /// </summary>
     internal class IrregularVerbsRepository
     {
-        private const string Data = @"be	was / were	been	быть \t
-                                      beat	  beat	    beaten	бить \t
-                                      become  became	become	становиться \t
-                                      begin	  began	    begun	начинать  \t
-                                      break	  broke	    broken	ломать  \t
-                                      bring	  brought	brought	приносить  \t
-                                      build	  built	    built	строить  \t
-                                      burn	  burnt	    burnt	гореть  \t
-                                      burst	  burst	    burst	взрываться \t
+        private const string Data = @"be	was / were	been	быть
+beat	beat	beaten	бить
+become	became	become	становиться
+begin	began	begun	начинать
+break	broke	broken	ломать
+bring	brought	brought	приносить
+build	built	built	строить
+burn	burnt	burnt	гореть
+burst	burst	burst	взрываться
 buy	bought	bought	покупать
 can	could	-	мочь, уметь
 catch	caught	caught	ловить, хватать
@@ -104,7 +104,7 @@ write	wrote	written	писать";
         /// Разделитель - символ перевода строки
         /// </summary>
         /// <returns>Массив строк</returns>
-        private string[] GetRows(string Data)
+        private string[] GetRows()
         {
             return Data.Split(Environment.NewLine.ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
         }
@@ -113,20 +113,17 @@ write	wrote	written	писать";
         /// Преобразует каждую строку в массив слов, разделенных симв. табуляции
         /// </summary>
         /// <returns>Массив массивов</returns>
-        public string[][] GetWords(string Data)
+        public string[][] GetWords()
         {
-            var rows = GetRows(Data);
+            var rows = GetRows();
             string[][] words = new string[rows.Length][];
 
             for (int i = 0; i < rows.Length; i++)
             {
                 words[i] = rows[i].Split(new[] { "\t" }, StringSplitOptions.RemoveEmptyEntries);
-                //Console.WriteLine(words[i]);
             }
 
             return words;
         }
-     
     }
 }
-

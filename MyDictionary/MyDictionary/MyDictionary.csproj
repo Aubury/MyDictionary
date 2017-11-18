@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dictionary_of_irregular_verds.cs" />
     <Compile Include="Irregular verbs.cs" />
     <Compile Include="IrregularVerbsRepository.cs" />
     <Compile Include="Program.cs" />
